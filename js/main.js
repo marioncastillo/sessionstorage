@@ -1,13 +1,21 @@
-function guardarDatos(){
-	localStorage.nombre= document.getElementById("nombre").value;
-	localStorage.password= document.getElementById("password").value
+function saveData(){
+	var name=document.getElemenById("name").value;
+	var clave=document.getElemenById("clave").value;
+	sessionStorage.setItem(name,clave);
 }
 
-function recuperarDatos(){
-	if ((localStorage.nombre != undefined) && (localStorage.password !=undefined)){
-		document.getElementById("datos").innerHTML = "Nombre:" + localStorage.nombre + "<br/> Password: " + localStorage.password;
+function recoverData{
+	for(var i=0;i<sessionStorage.length;i++){
+		var name=sessionStorage.key(i);
+		var clave=sessionStorage.getItem(name);
+		document.getElemenById("data").innerHTML = '<div>' + 'Nombre : ' + name + '<br/> Clave : ' +clave+ '<div>';
 	}
-	else{
-		document.getElementById("datos").innerHTML = "No has introducido tu nombre y tu password";
-	}
+}
+
+function cleanData(){
+	document.getElemenById("data").innerHTML='Limpiada Vista.Los datos permanecen.';
+}
+
+function borrarTodo(){
+	sessionStorage.clear(); recoverData();
 }
